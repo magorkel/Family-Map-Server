@@ -1,0 +1,46 @@
+CREATE TABLE if not exists User 
+(
+	UserName varchar(255) not null UNIQUE,
+	Password varchar(255) not null,
+	Email varchar(255) not null,
+	FirstName varchar(255) not null,
+	LastName varchar(255) not null,
+	Gender varchar(255) not null,
+	PersonID varchar(255) not null,
+	PRIMARY KEY(UserName)
+);
+
+CREATE TABLE if not exists Token
+(
+	UserName varchar(255) not null,
+	Password varchar(255) not null,
+	UniqueToken varchar(255) not null UNIQUE,
+	PRIMARY KEY(UserName)
+);
+
+CREATE TABLE if not exists Person
+(
+	PersonID varchar(255) not null UNIQUE,
+	AssociatedUsername varchar(255) not null,
+	FirstName varchar(255) not null,
+	LastName varchar(255) not null,
+	Gender varchar(255) not null,
+	FatherID varchar(255),
+	MotherID varchar(255),
+	SpouseID varchar(255),
+	PRIMARY KEY(PersonID)
+);
+
+CREATE TABLE if not exists Event
+(
+	EventID varchar(255) not null UNIQUE,
+	AssociatedUsername varchar(255) not null,
+	PersonID varchar(255) not null,
+	Latitude double not null,
+	Longitude double not null,
+	Country varchar(255) not null,
+	City varchar(255) not null,
+	EventType varchar(255) not null,
+	Year integer not null,
+	PRIMARY KEY(EventID)
+);
